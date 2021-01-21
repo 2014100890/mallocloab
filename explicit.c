@@ -91,9 +91,8 @@ static void *extend_heap(size_t words)
     char *bp; // 확장하고 난 데이터의 맨 앞 
     size_t size; // asize로 보는게 명확함 
     /* Allocate an even number of words to maintain alignment */
-    /* 더블 워드 할당 기준을 지키기 위해서 추가 해야하는 워드가 홀수면
-     * 워드 1개를 더 추가해서 더블 워드의 배수로 조정*/
-    size = (words % 2) ? (words + 1) * WSIZE : words * WSIZE;
+    size = words * WSIZE; 
+
     if(size < MINBLOCK)
         size = MINBLOCK;
     /* mem_sbrk를 통해 break를 뒤로 옮겨 힙 공간을 size만큼 키운다 */
